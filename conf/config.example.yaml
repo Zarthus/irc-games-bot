@@ -1,0 +1,30 @@
+irc:
+  server: "irc.example.org"
+  server_password:
+  port: 6697
+  ssl: true
+  ssl_verify: false
+  bind:
+  umodes:
+
+  realname: "IRC Games Bot"
+  username: "gamesbot"
+  nick: "gamesbot"
+
+  auth:
+    cert:
+      client_cert:
+
+    sasl:
+      account:
+      password:
+
+  channels:
+    - "#ircgames"
+
+  games:
+    - "#ircgames"
+
+app_root: "lib/gamebot"
+prefix: "!"
+source_url: "https://github.com/zarthus/irc-games-bot/"

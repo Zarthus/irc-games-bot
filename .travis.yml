@@ -1,0 +1,23 @@
+language: ruby
+
+gemfile:
+  - Gemfile
+
+rvm:
+  - 2.0.0
+
+script:
+  - bundle install
+  - bundle exec rspec
+
+notifications:
+  email:
+    - buughost+travis@gmail.com
+  irc:
+    channels:
+      - "irc.esper.net#zarthus"
+      - "irc.esper.net#ircgames.dev"
+    template:
+      - "%{repository}#%{build_number} (%{branch} - %{commit}) %{author}: %{message} - %{build_url}"
+  on_failure: always
+  on_success: change
