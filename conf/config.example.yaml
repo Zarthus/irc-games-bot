@@ -22,7 +22,7 @@ irc:
   channels:
     - "#ircgames"
 
-  games:
+  game_channel:
     - "#ircgames"
 
 app_root: "lib/gamebot"

@@ -1,6 +1,8 @@
 IRC Games bot
 =============
 
+[![Build Status](https://travis-ci.org/Zarthus/irc-games-bot.svg)](https://travis-ci.org/Zarthus/irc-games-bot)
+
 GamesBot is a modular IRC bot written on the Cinch IRC framework. GamesBot strives to host a large variety of enjoyable
 irc games together with your friends. It offers many helper functions to easily design new games, and is easily set up and installed.
 
