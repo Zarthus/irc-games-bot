@@ -13,7 +13,7 @@ To install you must first install the appropriate gems.
 The easiest way to do this is by running `bundle install` from the root of the directory.
 
 Once the command has completed, copy `conf/config.example.yaml` to `conf/config.yaml` and start editing the file with your favourite text editor.
-Most of the options will be straightforward if you have experience with IRC, if an option confuses you, refer to [the docs](docs/configuration.md).
+Most of the options will be straightforward if you have experience with IRC. If an option confuses you, refer to [the docs](docs/configuration.md).
 
 ## Running tests
 
@@ -40,7 +40,7 @@ That's all that is necessary to set up the bot. You can now run it using `./bot.
 
 Please refer to [the documentation](docs) for more elaboration on certain functions.
 
-If you need extra support, see
+If you need extra support, see [docs/support](docs/support.md).
 
 ## License
 

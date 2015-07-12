@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
+$LOAD_PATH.unshift("#{File.dirname(__FILE__)}/lib")
+
 require 'cinch'
 require 'yaml'
-require_relative 'lib/gamebot/argparser'
-require_relative 'lib/gamebot/plugin_loader'
+require 'gamebot/gamebot'
 
 if Process.uid == 0 && RUBY_PLATFORM !~ /mswin|mingw|cygwin/
   puts 'Please do not start this program as root.'
@@ -12,7 +13,7 @@ end
 
 bot = Cinch::Bot.new do
   configure do |c|
-    args = ArgParser.parse(ARGV)
+    args = GameBot::Utilities::ArgParser.parse(ARGV)
     yaml_path = './conf/config.'
 
     if args[:env]
@@ -68,7 +69,7 @@ bot = Cinch::Bot.new do
 
     c.plugins.prefix = /^#{Regexp.escape(config['prefix'])}/
 
-    ploader = PluginLoader.new(config['app_root'])
+    ploader = GameBot::PluginLoader.new(config['app_root'])
     info 'Loading plugins: ' + ploader.list.to_s
     c.plugins.plugins = ploader.get
 

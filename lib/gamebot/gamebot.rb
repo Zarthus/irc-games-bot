@@ -1,3 +1,6 @@
-class GameBot
-  VERSION = '0.1'
+require 'gamebot/includes'
+
+module GameBot
+  class GameBot
+  end
 end
