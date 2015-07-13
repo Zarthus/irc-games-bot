@@ -1,5 +1,3 @@
-require 'cinch'
-
 module GameBot
   module Plugin
     class Dice
