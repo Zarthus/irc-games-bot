@@ -1,7 +1,10 @@
-IRC Games bot
+IRC Games Bot
 =============
 
 [![Build Status](https://travis-ci.org/Zarthus/irc-games-bot.svg)](https://travis-ci.org/Zarthus/irc-games-bot)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://img.shields.io/badge/license-MIT-brightgreen.svg)
+[![Dependency Status](https://gemnasium.com/Zarthus/irc-games-bot.svg)](https://gemnasium.com/Zarthus/irc-games-bot)
+[![Security](https://hakiri.io/github/Zarthus/irc-games-bot/master.svg)](https://hakiri.io/github/Zarthus/irc-games-bot/master)
 
 GamesBot is a modular IRC bot written on the Cinch IRC framework. GamesBot strives to host a large variety of enjoyable
 irc games together with your friends. It offers many helper functions to easily design new games, and is easily set up and installed.
