@@ -1,7 +1,9 @@
-IRC Games bot
+IRC Games Bot
 =============
 
 [![Build Status](https://travis-ci.org/Zarthus/irc-games-bot.svg)](https://travis-ci.org/Zarthus/irc-games-bot)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://img.shields.io/badge/license-MIT-brightgreen.svg)
+[![Dependency Status](https://gemnasium.com/Zarthus/irc-games-bot.svg)](https://gemnasium.com/Zarthus/irc-games-bot)
 [![Security](https://hakiri.io/github/Zarthus/irc-games-bot/master.svg)](https://hakiri.io/github/Zarthus/irc-games-bot/master)
 
 GamesBot is a modular IRC bot written on the Cinch IRC framework. GamesBot strives to host a large variety of enjoyable
@@ -14,7 +16,7 @@ To install you must first install the appropriate gems.
 The easiest way to do this is by running `bundle install` from the root of the directory.
 
 Once the command has completed, copy `conf/config.example.yaml` to `conf/config.yaml` and start editing the file with your favourite text editor.
-Most of the options will be straightforward if you have experience with IRC. If an option confuses you, refer to [the docs](docs/configuration.md).
+Most of the options will be straightforward if you have experience with IRC. If an option confuses you, refer to [the docs](/docs/configuration/).
 
 ## Running tests
 
@@ -39,9 +41,9 @@ That's all that is necessary to set up the bot. You can now run it using `./bot.
 
 ## Documentation
 
-Please refer to [the documentation](docs) for more elaboration on certain functions.
+Please refer to [the documentation](/docs) for more elaboration on certain functions.
 
-If you need extra support, see [docs/support](docs/support.md).
+If you need extra support, see [docs/support](/docs/support/).
 
 ## License
 
