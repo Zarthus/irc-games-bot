@@ -104,6 +104,10 @@ a {
   .project-tagline {
     font-size: 1rem; } }
 
+a.project-header-link {
+  color: #fff;
+}
+
 .main-content :first-child {
   margin-top: 0; }
 .main-content img {
@@ -223,7 +227,8 @@ a {
 .site-footer {
   padding-top: 2rem;
   margin-top: 2rem;
-  border-top: solid 1px #eff0f1; }
+  border-top: solid 1px #eff0f1; 
+  text-align: center; }
 
 .site-footer-owner {
   display: block;

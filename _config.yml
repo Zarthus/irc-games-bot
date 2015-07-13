@@ -1,0 +1,13 @@
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+      title_suffix: "IRC Games Bot by Zarthus"
+  -
+    scope:
+      path: "docs"
+    values:
+      layout: "docs"
+      title_suffix: "Docs | IRC Games Bot By Zarthus"

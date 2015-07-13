@@ -1,0 +1,11 @@
+{% include head.html %}
+{% include header.html %}
+
+    <section class="main-content">
+        {% include docsheader.html %}
+        
+        {% capture page %}{% include pages/docs/{{ page.doctitle | slugify }}.md %}{% endcapture %}
+        {{ page | markdownify }}
+    </section>
+
+{% include footer.html %}
