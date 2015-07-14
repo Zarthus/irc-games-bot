@@ -22,7 +22,7 @@ module GameBot
           end
 
           opts.on_tail('--version', 'Show version') do
-            puts 'GameBot version ' + GameBot::VERSION + ' using Cinch version ' + Cinch::VERSION
+            puts 'GameBot version ' + VERSION + ' using Cinch version ' + Cinch::VERSION
             puts 'Ruby version: ' + RUBY_VERSION
             exit
           end
