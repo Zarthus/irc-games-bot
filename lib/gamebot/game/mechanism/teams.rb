@@ -1,7 +1,7 @@
 module GameBot
   module Game
     module Mechanism
-      class Teams
+      class Teams < Mechanism
 
       end
     end

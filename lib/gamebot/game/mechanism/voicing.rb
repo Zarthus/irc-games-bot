@@ -1,7 +1,7 @@
 module GameBot
   module Game
     module Mechanism
-      class Voicing
+      class Voicing < Mechanism
 
       end
     end

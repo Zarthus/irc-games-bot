@@ -1,8 +1,8 @@
 module GameBot
   module Game
     module Mechanism
-      class Roles < Mechanism
-
+      class Mechanism
+          include Cinch::Plugin
       end
     end
   end

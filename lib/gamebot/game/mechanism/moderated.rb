@@ -1,7 +1,8 @@
 module GameBot
   module Game
     module Mechanism
-      class Roles < Mechanism
+      class Moderated < Mechanism
+
 
       end
     end
