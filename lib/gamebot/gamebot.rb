@@ -76,6 +76,8 @@ module GameBot
           if config['source_url']
             c.source_url = config['source_url']
           end
+
+          c.storage = config['storage_path'] || 'storage'
         end
       end
     end
