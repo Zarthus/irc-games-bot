@@ -1,0 +1,42 @@
+Contributing Guidelines
+=======================
+
+
+## New Issue
+
+- If you're writing an issue, please be concise in what the problem/suggestion is.
+- Bug Reports
+  - Try to include a stacktrace of the error.
+  - Try to explain how to reproduce the issue.
+  - Include the version of ruby, cinch, and the bot you are running on (`./bot.rb --version`)
+
+### Security issues
+
+If you've found a security issue, please do not post a new issue, but instead send an email to security@presstoplay.net.
+
+## New Pull Request
+
+Submitting a patch? Great!
+
+Here's a checklist of what we'll generally be looking for, if all items are crossed off, you're good to send in a PR:
+
+- Are the changes following the style guide?
+- Are all tests completing successfully?
+- Are the commits descriptive of what was changed?
+  - Are any useless commits properly rewritten?
+- If applicable, do the commit messages include the ID of the issue?
+
+Furthermore, we would appreciate if you named your branch accordingly to what the feature does. Example:
+
+Bad: `patch-1`, `feature`, `change`, `fix`
+Great: `feature/ignore-ctcp-flood`, `feature/voice-mechanism`, `fix/replay-tracking`, `game/super-mario-world`
+
+### New Game
+
+Making a new game and testing it can be time consuming, and hopefully we were able to provide the tools necessary for your game to shine.
+
+If everything works as you'd like, and the Pull Request guidelines are met. Send in the pull request, write a small description of what your game is all about and fire off the pull request.
+
+## Thanks!
+
+Regardless of how you contribute, thanks for contributing!
