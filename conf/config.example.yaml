@@ -25,7 +25,6 @@ irc:
   game_channel:
     - "#ircgames"
 
-app_root: "lib/gamebot"
-storage_path: "storage"
+logging: true
 prefix: "!"
 source_url: "https://github.com/zarthus/irc-games-bot/"

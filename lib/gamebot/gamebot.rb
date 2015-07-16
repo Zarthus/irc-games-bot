@@ -13,6 +13,8 @@ module GameBot
     def configure
       @bot = Cinch::Bot.new do
         configure do |c|
+          c.root = __dir__
+
           args = Utilities::ArgParser.parse(ARGV)
           yaml_path = './conf/config.'
 
@@ -69,7 +71,7 @@ module GameBot
 
           c.plugins.prefix = /^#{Regexp.escape(config['prefix'])}/
 
-          ploader = PluginLoader.new(config['app_root'])
+          ploader = PluginLoader.new(c.root)
           info 'Loading plugins: ' + ploader.list.to_s
           c.plugins.plugins = ploader.get
 
@@ -77,13 +79,50 @@ module GameBot
             c.source_url = config['source_url']
           end
 
-          c.storage = config['storage_path'] || 'storage'
+          alt_storage = File.join(Dir.back(c.root, 2), 'storage')
+          c.storage = File.join(config['storage_path'] || alt_storage)
+          c.logging = config['logging']
+
+          info "Storage path: #{c.storage}"
         end
       end
     end
 
     def start
+      logging
       @bot.start
+    end
+
+    def storage(path = nil)
+      if path
+        return File.join(@bot.config.storage, path)
+      end
+
+      @bot.config.storage
+    end
+
+    def logging
+      if @bot.config.logging
+        logfile = storage(File.join('irc', 'main.log'))
+        @bot.loggers << Cinch::Logger::FormattedLogger.new(File.open(logfile, 'w+'))
+
+        case @bot.config.logging
+          when 'debug'
+            @bot.loggers.level = :debug
+          when 'log'
+            @bot.loggers.level = :log
+          when 'info'
+            @bot.loggers.level = :info
+          when 'warn'
+            @bot.loggers.level = :warn
+          when 'error'
+            @bot.loggers.level = :error
+          when 'fatal'
+            @bot.loggers.level = :fatal
+          else
+            @bot.loggers.level = :debug
+        end
+      end
     end
   end
 end
