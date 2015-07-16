@@ -11,3 +11,6 @@ defaults:
     values:
       layout: "docs"
       title_suffix: "Docs | IRC Games Bot By Zarthus"
+
+kramdown:
+  input: GFM
