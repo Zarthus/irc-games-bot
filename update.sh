@@ -14,7 +14,7 @@ BRANCH=$(git branch | head -1)
 
 if [[ $BRANCH == "* gh-pages" ]]; then
   git add --all
-  git commit -m ":book: Automatically synchronized documentation with master." -m "$(echo "$SYNC")" --all
+  git commit -m ":book: Automatically synchronized documentation with master." -m "$(echo "$SYNC")"
   git push
 else
   echo "Current git branch is not gh-pages."
