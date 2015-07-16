@@ -3,6 +3,7 @@ require 'gamebot/plugin_loader'
 
 require 'gamebot/utilities/argparser'
 require 'gamebot/utilities/string'
+require 'gamebot/utilities/dir'
 
 require 'gamebot/game/info'
 require 'gamebot/game/players'
