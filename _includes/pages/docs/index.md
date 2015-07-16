@@ -1,5 +1,10 @@
 [Configuration](/docs/configuration/)  
+[Experience](/docs/experience/)  
 [Index](/docs/index/)  
+[Mechanisms](/docs/mechanisms/)  
+[Replays](/docs/replays/)  
+[Replay-tags](/docs/replay-tags/)  
 [Requirements](/docs/requirements/)  
 [Support](/docs/support/)  
+[Syntax-help](/docs/syntax-help/)  
 

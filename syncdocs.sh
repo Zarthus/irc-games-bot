@@ -3,7 +3,7 @@
 # Usage: ./syncdocs.sh
 
 for file in _includes/pages/docs/*.md; do
-  FILE_NAME=$(echo $file | sed -E 's/.*\/([a-zA-Z0-9]+)\.md$/\1/')
+  FILE_NAME=$(echo $file | sed -E 's/.*\/([a-zA-Z0-9\-]+)\.md$/\1/')
   ./mkdocs.sh --name="$FILE_NAME" --no-prompt --silent
 done
 

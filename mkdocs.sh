@@ -12,7 +12,7 @@ for arg in $@; do
   fi
   
   if [[ $arg == --name=* ]]; then
-    DOCNAME=$(echo $arg | sed -E 's/.*=([a-zA-Z0-9]+)$/\1/')
+    DOCNAME=$(echo $arg | sed -E 's/.*=([a-zA-Z0-9\-]+)$/\1/')
   fi
 done 
 
