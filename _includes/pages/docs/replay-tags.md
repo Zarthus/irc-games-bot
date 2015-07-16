@@ -6,6 +6,7 @@ Games are all different, and it's difficult to predict what kind of tags are goi
 There's a standard set of tags we recommend you use for certain events (which will also be used by game mechanisms), but you're free to invent your own tags if your game needs it.
 
 Replay Tags map:
+
 ```
 GAME_INIT - a game is being started up
 GAME_START - a game has started
@@ -21,6 +22,7 @@ ROLE_ASSIGN - someone has been assigned a role
 ```
 
 The following tags may be reused for things like players, teams, npcs, roles, etc.
+
 ```
 PLAYER_ACTION - player is doing something
 PLAYER_ATTACK - player is attacking something
