@@ -12,7 +12,7 @@ module GameBot
         return @list_cache
       end
 
-      @list_cache = Dir.glob("#{@app_root}/plugins/enabled/*.rb") + Dir.glob("#{@app_root}/plugins/games/enabled/*.rb")
+      @list_cache = Dir.glob("#{@app_root}/plugins/enabled/*.rb")
     end
 
     def get
