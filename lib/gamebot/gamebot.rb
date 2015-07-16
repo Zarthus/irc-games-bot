@@ -4,8 +4,6 @@ require 'gamebot/includes'
 
 module GameBot
   class GameBot
-    @bot
-
     def initialize
       configure
     end
@@ -67,12 +65,12 @@ module GameBot
           end
 
           c.channels = config['irc']['channels']
-          c.games = config['irc']['game_channel']
+          c.games = config['irc']['game_channel'].to_a
 
           c.plugins.prefix = /^#{Regexp.escape(config['prefix'])}/
 
           ploader = PluginLoader.new(c.root)
-          info 'Loading plugins: ' + ploader.list.to_s
+          info 'Loading plugins: ' + ploader.list_rel.to_s
           c.plugins.plugins = ploader.get
 
           if config['source_url']
@@ -86,10 +84,10 @@ module GameBot
           info "Storage path: #{c.storage}"
         end
       end
+      logging
     end
 
     def start
-      logging
       @bot.start
     end
 
