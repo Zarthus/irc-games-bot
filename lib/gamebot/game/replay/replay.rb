@@ -24,8 +24,8 @@ module GameBot
         parse tag
       end
 
-      def parse(tag = :STORE_LOG)
-        fmt = format tag
+      def parse(save_as = :STORE_LOG)
+        fmt = format save_as
         return '' unless fmt
 
         messages = ''
@@ -33,7 +33,7 @@ module GameBot
         @timeline.each do |event|
           event.each do |ts, data|
             action = data[0]
-            type = data[1]
+            tag = data[1]
 
             messages += fmt % { ts: ts, action: action.gsub(/(["'])/, '\\\1'), tag: tag }
           end
@@ -45,9 +45,9 @@ module GameBot
       def format(tag)
         case tag
         when :STORE_LOG
-          fmt = "%{ts} [%{tag}]: %{action}\n"
+          "%{ts} [%{tag}]: %{action}\n"
         when :STORE_CSV
-          fmt = "%{ts},%{tag},%{action}\n"
+          "%{ts},%{tag},%{action}\n"
         else
           error "Unknown tag #{tag} for replay formatting."
           false

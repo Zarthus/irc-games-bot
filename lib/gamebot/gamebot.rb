@@ -21,7 +21,7 @@ module GameBot
             yaml_path += args[:env] + '.yaml'
 
             unless File.exist?(yaml_path)
-              fail RuntimeError "Specified configuration file '#{yaml_path}' not found. The environment #{:env} does not exist."
+              raise RuntimeError "Specified configuration file '#{yaml_path}' not found. The environment #{:env} does not exist."
             end
           else
             yaml_path += 'yaml'

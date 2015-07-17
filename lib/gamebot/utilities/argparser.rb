@@ -10,7 +10,7 @@ module GameBot
 
           opts.on('--env=ENV', 'Specify the environment to load.') do |env|
             if env == 'example'
-              fail SecurityError "The environment '#{env}' may not be used."
+              raise SecurityError "The environment '#{env}' may not be used."
             end
 
             options[:env] = env

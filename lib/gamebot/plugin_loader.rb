@@ -27,7 +27,7 @@ module GameBot
         require "gamebot/plugins/enabled/#{file}"
       end
 
-      plugins_load = Plugin.constants.map do |const|
+      Plugin.constants.map do |const|
         eval("Plugin::#{const}")
       end
     end

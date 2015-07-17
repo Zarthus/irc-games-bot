@@ -8,7 +8,7 @@ class Paste
     if valid service
       @_default = service
     else
-      fail "Paste Service does not exist: #{_default}."
+      raise "Paste Service does not exist: #{_default}."
     end
   end
 
@@ -17,7 +17,7 @@ class Paste
     when :gist
       res = gist(contents, *args)
     else
-      fail "Paste Service does not exist: #{_default}."
+      raise "Paste Service does not exist: #{_default}."
     end
 
     res

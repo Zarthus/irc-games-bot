@@ -8,19 +8,19 @@ module GameBot
         @manager = Manager.new
       end
 
-      match /start ([^ ]+)?(?: (.+))?/, method: :cmd_start
+      match '/start ([^ ]+)?(?: (.+))?/', method: :cmd_start
       def cmd_start(m, name, params)
         cmd_game m, 'start', name, params
       end
 
-      match /stop$/, method: :cmd_stop
+      match '/stop$/', method: :cmd_stop
       def cmd_stop(m)
         cmd_game m, 'stop', '', ''
       end
 
-      match /game ([^ ]+)?(?: ([^ ]+)?(?: (.+)))?/, method: :cmd_game
+      match '/game ([^ ]+)?(?: ([^ ]+)?(?: (.+)))?/', method: :cmd_game
       def cmd_game(m, keyword, name, params)
-        return false unless is_game_channel(m.channel.to_s.downcase)
+        return false unless game_channel?(m.channel.to_s.downcase)
 
         unless name
           return m.reply 'Usage: GAME <keyword: start, stop> <gamename> [options ..]'
