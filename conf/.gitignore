@@ -1,3 +1,5 @@
 *
 !.gitignore
 !*.example.yaml
+!rubocop.yaml
+!rubocop_*.yaml
