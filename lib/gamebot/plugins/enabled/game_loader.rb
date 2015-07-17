@@ -32,12 +32,12 @@ module GameBot
         end
 
         case keyword.downcase
-        when 'start'
-          game_start m, name, options
-        when 'stop'
-          game_stop m
-        else
-          m.reply 'Usage: GAME <keyword: start, end> <gamename> [options ..]'
+          when 'start'
+            game_start m, name, options
+          when 'stop'
+            game_stop m
+          else
+            m.reply 'Usage: GAME <keyword: start, end> <gamename> [options ..]'
         end
       end
     end

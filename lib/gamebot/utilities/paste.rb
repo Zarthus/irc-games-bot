@@ -14,10 +14,10 @@ class Paste
 
   def self.paste(contents, *args)
     case _default
-    when :gist
-      res = gist(contents, *args)
-    else
-      raise "Paste Service does not exist: #{_default}."
+      when :gist
+        res = gist(contents, *args)
+      else
+        raise "Paste Service does not exist: #{_default}."
     end
 
     res

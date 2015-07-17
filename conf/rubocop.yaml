@@ -7,3 +7,5 @@ AllCops:
 Metrics/LineLength:
   Max: 160
 
+Style/CaseIndentation:
+  IndentOneStep: true

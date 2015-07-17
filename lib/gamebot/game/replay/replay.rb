@@ -44,13 +44,13 @@ module GameBot
 
       def format(tag)
         case tag
-        when :STORE_LOG
-          "%{ts} [%{tag}]: %{action}\n"
-        when :STORE_CSV
-          "%{ts},%{tag},%{action}\n"
-        else
-          error "Unknown tag #{tag} for replay formatting."
-          false
+          when :STORE_LOG
+            "%{ts} [%{tag}]: %{action}\n"
+          when :STORE_CSV
+            "%{ts},%{tag},%{action}\n"
+          else
+            error "Unknown tag #{tag} for replay formatting."
+            false
         end
       end
 

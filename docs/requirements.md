@@ -1,4 +1,4 @@
 Requirements
 ============
 
-Ruby >2.0.0
+Ruby > 2.0.0
