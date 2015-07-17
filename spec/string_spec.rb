@@ -9,5 +9,4 @@ describe 'String Helper Functions' do
   it 'should underscore input' do
     expect('MechanismManager'.underscore).to eq('mechanism_manager')
   end
-
 end

@@ -20,9 +20,7 @@ module GameBot
 
       match /game ([^ ]+)?(?: ([^ ]+)?(?: (.+)))?/, method: :cmd_game
       def cmd_game(m, keyword, name, params)
-        unless is_game_channel(m.channel.to_s.downcase)
-          return false
-        end
+        return false unless is_game_channel(m.channel.to_s.downcase)
 
         unless name
           return m.reply 'Usage: GAME <keyword: start, stop> <gamename> [options ..]'
@@ -34,17 +32,17 @@ module GameBot
         end
 
         case keyword.downcase
-          when 'start'
-            game_start m, name, options
-          when 'stop'
-            game_stop m
-          else
-            m.reply 'Usage: GAME <keyword: start, end> <gamename> [options ..]'
+        when 'start'
+          game_start m, name, options
+        when 'stop'
+          game_stop m
+        else
+          m.reply 'Usage: GAME <keyword: start, end> <gamename> [options ..]'
         end
       end
     end
 
-    def game_start(m, name, options)
+    def game_start(m, name, _options)
       @game = name
       m.reply "A game of #{name} has been started by #{m.user}!"
     end
@@ -59,4 +57,3 @@ module GameBot
     end
   end
 end
-

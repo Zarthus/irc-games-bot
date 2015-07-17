@@ -8,5 +8,4 @@ describe 'Dir Helper Functions' do
 
     expect(Dir.back(path, 1)).to eq(path_expect)
   end
-
 end

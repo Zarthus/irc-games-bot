@@ -5,7 +5,7 @@ describe 'Example Configuration' do
   file = 'conf/config.example.yaml'
 
   it 'should exist' do
-    expect(File.exists?(file)).to eq(true)
+    expect(File.exist?(file)).to eq(true)
   end
 
   it 'should be readable' do

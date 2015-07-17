@@ -20,8 +20,8 @@ module GameBot
             info 'Detected environment: ' + args[:env]
             yaml_path += args[:env] + '.yaml'
 
-            unless File.exists?(yaml_path)
-              raise RuntimeError "Specified configuration file '#{yaml_path}' not found. The environment #{:env} does not exist."
+            unless File.exist?(yaml_path)
+              fail RuntimeError "Specified configuration file '#{yaml_path}' not found. The environment #{:env} does not exist."
             end
           else
             yaml_path += 'yaml'
@@ -38,9 +38,7 @@ module GameBot
           c.ssl.use = config['irc']['ssl']
           c.ssl.verify = config['irc']['ssl_verify']
 
-          if config['irc']['umodes']
-            c.modes = config['irc']['umodes'].chars
-          end
+          c.modes = config['irc']['umodes'].chars if config['irc']['umodes']
 
           if config['irc']['nick']
             c.nick = config['irc']['nick']
@@ -53,13 +51,11 @@ module GameBot
           c.user = config['irc']['username'] || 'gamebot'
           c.realname = config['irc']['realname'] || config['source_url'] || c.user
 
-          if config['irc']['bind']
-            c.local_host = config['irc']['bind']
-          end
+          c.local_host = config['irc']['bind'] if config['irc']['bind']
 
           if config['irc']['auth']['cert']['client_cert']
             c.ssl.client_cert = config['irc']['auth']['cert']['client_cert']
-          elsif config['irc']['auth']['sasl']['account'] and config['irc']['auth']['sasl']['password']
+          elsif config['irc']['auth']['sasl']['account'] && config['irc']['auth']['sasl']['password']
             c.sasl.username = config['irc']['auth']['sasl']['account']
             c.sasl.password = config['irc']['auth']['sasl']['password']
           end
@@ -73,9 +69,7 @@ module GameBot
           info 'Loading plugins: ' + ploader.list_rel.to_s
           c.plugins.plugins = ploader.get
 
-          if config['source_url']
-            c.source_url = config['source_url']
-          end
+          c.source_url = config['source_url'] if config['source_url']
 
           alt_storage = File.join(Dir.back(c.root, 2), 'storage')
           c.storage = File.join(config['storage_path'] || alt_storage)
@@ -83,9 +77,7 @@ module GameBot
 
           info "Storage path: #{c.storage}"
 
-          if config['paste_service']
-            Paste.default config['paste_service']
-          end
+          Paste.default config['paste_service'] if config['paste_service']
         end
       end
       logging
@@ -96,9 +88,7 @@ module GameBot
     end
 
     def storage(path = nil)
-      if path
-        return File.join(@bot.config.storage, path)
-      end
+      return File.join(@bot.config.storage, path) if path
 
       @bot.config.storage
     end
@@ -109,20 +99,20 @@ module GameBot
         @bot.loggers << Cinch::Logger::FormattedLogger.new(File.open(logfile, 'w+'))
 
         case @bot.config.logging
-          when 'debug'
-            @bot.loggers.level = :debug
-          when 'log'
-            @bot.loggers.level = :log
-          when 'info'
-            @bot.loggers.level = :info
-          when 'warn'
-            @bot.loggers.level = :warn
-          when 'error'
-            @bot.loggers.level = :error
-          when 'fatal'
-            @bot.loggers.level = :fatal
-          else
-            @bot.loggers.level = :debug
+        when 'debug'
+          @bot.loggers.level = :debug
+        when 'log'
+          @bot.loggers.level = :log
+        when 'info'
+          @bot.loggers.level = :info
+        when 'warn'
+          @bot.loggers.level = :warn
+        when 'error'
+          @bot.loggers.level = :error
+        when 'fatal'
+          @bot.loggers.level = :fatal
+        else
+          @bot.loggers.level = :debug
         end
       end
     end

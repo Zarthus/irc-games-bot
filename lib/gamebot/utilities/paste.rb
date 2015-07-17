@@ -8,16 +8,16 @@ class Paste
     if valid service
       @_default = service
     else
-      raise "Paste Service does not exist: #{self._default}."
+      fail "Paste Service does not exist: #{_default}."
     end
   end
 
   def self.paste(contents, *args)
-    case self._default
-      when :gist
-        res = gist(contents, *args)
-      else
-        raise "Paste Service does not exist: #{self._default}."
+    case _default
+    when :gist
+      res = gist(contents, *args)
+    else
+      fail "Paste Service does not exist: #{_default}."
     end
 
     res

@@ -1,7 +1,7 @@
 module GameBot
   module Game
     class MechanismManager
-      @loaded = Hash.new
+      @loaded = {}
 
       def add(mechanism)
         if find(mechanism)
@@ -21,7 +21,7 @@ module GameBot
       end
 
       def find(mechanism)
-        File.exists?("./mechanism/#{mechanism.underscore}.rb")
+        File.exist?("./mechanism/#{mechanism.underscore}.rb")
       end
 
       def added(mechanism)

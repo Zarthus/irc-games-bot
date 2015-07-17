@@ -8,7 +8,7 @@ module GameBot
 
       def execute(m, rolls, sides, offset_op, offset)
         rolls = rolls.to_i
-        rolls = 1 if (rolls < 1 || rolls > 100)
+        rolls = 1 if rolls < 1 || rolls > 100
 
         results = []
         total = 0
@@ -27,9 +27,7 @@ module GameBot
           total += result
         end
 
-        if offset_op
-          total = total.send(offset_op, offset.to_i)
-        end
+        total = total.send(offset_op, offset.to_i) if offset_op
 
         clean_results = results.join(', ')
         res = "You rolled a #{sides} sided die #{rolls} time" + (rolls == 1 ? '' : 's') + " with the result of #{total} (#{clean_results})"

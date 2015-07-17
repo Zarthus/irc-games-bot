@@ -7,7 +7,7 @@ module GameBot
       end
 
       def track(action, tag = :PLAYER_ACTION)
-        @timeline << {timestamp => [action, tag]}
+        @timeline << { timestamp => [action, tag] }
       end
 
       def store(tag = :STORE_LOG) # TODO: Get extension to store in and place in storage folder/replay folder.
@@ -35,7 +35,7 @@ module GameBot
             action = data[0]
             type = data[1]
 
-            messages += fmt % {:ts => ts, :action => action.gsub(/(["'])/, '\\\1'), :tag => tag}
+            messages += fmt % { ts: ts, action: action.gsub(/(["'])/, '\\\1'), tag: tag }
           end
         end
 
@@ -44,13 +44,13 @@ module GameBot
 
       def format(tag)
         case tag
-          when :STORE_LOG
-            fmt = "%{ts} [%{tag}]: %{action}\n"
-          when :STORE_CSV
-            fmt = "%{ts},%{tag},%{action}\n"
-          else
-            error "Unknown tag #{tag} for replay formatting."
-            false
+        when :STORE_LOG
+          fmt = "%{ts} [%{tag}]: %{action}\n"
+        when :STORE_CSV
+          fmt = "%{ts},%{tag},%{action}\n"
+        else
+          error "Unknown tag #{tag} for replay formatting."
+          false
         end
       end
 
