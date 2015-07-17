@@ -82,6 +82,10 @@ module GameBot
           c.logging = config['logging']
 
           info "Storage path: #{c.storage}"
+
+          if config['paste_service']
+            Paste.default config['paste_service']
+          end
         end
       end
       logging

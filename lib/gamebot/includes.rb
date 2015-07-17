@@ -10,6 +10,7 @@ require 'gamebot/utilities/paste'
 require 'gamebot/game/info'
 require 'gamebot/game/players'
 require 'gamebot/game/status'
+require 'gamebot/game/manager'
 require 'gamebot/game/mechanism'
 require 'gamebot/game/mechanism_manager'
 

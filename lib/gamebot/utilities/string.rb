@@ -10,4 +10,12 @@ class String
         .sub(/^_/, '')
         .downcase
   end
+
+  def to_gist
+    Paste.gist(self.to_s)
+  end
+
+  def paste
+    Paste.paste(self.to_s)
+  end
 end
