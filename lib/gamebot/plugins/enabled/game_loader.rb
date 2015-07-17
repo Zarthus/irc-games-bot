@@ -3,15 +3,29 @@ module GameBot
     class GameLoader
       include Cinch::Plugin
 
-      match /game ([^ ]+)?(?: ([^ ]+)?(?: (.+)))?/
+      def intialize
+        super
+        @manager = Manager.new
+      end
 
-      def execute(m, keyword, name, params)
+      match /start ([^ ]+)?(?: (.+))?/, method: :cmd_start
+      def cmd_start(m, name, params)
+        cmd_game m, 'start', name, params
+      end
+
+      match /stop$/, method: :cmd_stop
+      def cmd_stop(m)
+        cmd_game m, 'stop', '', ''
+      end
+
+      match /game ([^ ]+)?(?: ([^ ]+)?(?: (.+)))?/, method: :cmd_game
+      def cmd_game(m, keyword, name, params)
         unless is_game_channel(m.channel.to_s.downcase)
           return false
         end
 
         unless name
-          return m.reply 'Usage: GAME <keyword: start, end> <gamename> [options ..]'
+          return m.reply 'Usage: GAME <keyword: start, stop> <gamename> [options ..]'
         end
 
         options = nil
@@ -21,9 +35,9 @@ module GameBot
 
         case keyword.downcase
           when 'start'
-            game_start m name options
-          when 'end'
-            game_end m
+            game_start m, name, options
+          when 'stop'
+            game_stop m
           else
             m.reply 'Usage: GAME <keyword: start, end> <gamename> [options ..]'
         end
@@ -39,7 +53,7 @@ module GameBot
       @game
     end
 
-    def game_end(m)
+    def game_stop(m)
       m.reply "A game of #{@game} has been stopped by #{m.user}!"
       @game = nil
     end
