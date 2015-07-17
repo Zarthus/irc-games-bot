@@ -9,6 +9,7 @@ rvm:
 script:
   - bundle install
   - bundle exec rspec
+  - rubocop
 
 notifications:
   email:

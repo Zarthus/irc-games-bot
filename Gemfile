@@ -5,4 +5,5 @@ gem 'gist'
 
 group :dev, :test do
   gem 'rspec'
+  gem 'rubocop'
 end
