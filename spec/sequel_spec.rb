@@ -12,11 +12,11 @@ describe 'Sequel Database Test' do
 
     items = dbh[:items]
 
-    items.insert(:name => 'A')
-    items.insert(:name => 'B')
-    items.insert(:name => 'C')
+    items.insert(name: 'A')
+    items.insert(name: 'B')
+    items.insert(name: 'C')
 
     expect(items.count).to eq(3)
-    expect(items.where(:id => 1).first[:name]).to eq('A')
+    expect(items.where(id: 1).first[:name]).to eq('A')
   end
 end

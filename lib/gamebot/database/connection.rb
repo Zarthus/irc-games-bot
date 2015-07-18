@@ -6,10 +6,7 @@ module GameBot
     def self.connect(conf, storage)
       @db = Sequel.connect(conf)
 
-      if storage
-        @db.loggers << Logger.new(storage)
-      end
-
+      @db.loggers << Logger.new(storage) if storage
     end
 
     def self.disconnect
