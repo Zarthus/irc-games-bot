@@ -74,6 +74,7 @@ module GameBot
           alt_storage = File.join(Dir.back(c.root, 2), 'storage')
           c.storage = File.join(config['storage_path'] || alt_storage)
           c.logging = config['logging']
+          c.database = config['database']
 
           info "Storage path: #{c.storage}"
 
@@ -81,6 +82,7 @@ module GameBot
         end
       end
       logging
+      database
     end
 
     def start
@@ -95,26 +97,35 @@ module GameBot
 
     def logging
       if @bot.config.logging
-        logfile = storage(File.join('irc', 'main.log'))
+        logfile = storage(File.join('logs', 'irc.log'))
         @bot.loggers << Cinch::Logger::FormattedLogger.new(File.open(logfile, 'w+'))
 
         case @bot.config.logging
-        when 'debug'
-          @bot.loggers.level = :debug
-        when 'log'
-          @bot.loggers.level = :log
-        when 'info'
-          @bot.loggers.level = :info
-        when 'warn'
-          @bot.loggers.level = :warn
-        when 'error'
-          @bot.loggers.level = :error
-        when 'fatal'
-          @bot.loggers.level = :fatal
-        else
-          @bot.loggers.level = :debug
+          when 'debug'
+            @bot.loggers.level = :debug
+          when 'log'
+            @bot.loggers.level = :log
+          when 'info'
+            @bot.loggers.level = :info
+          when 'warn'
+            @bot.loggers.level = :warn
+          when 'error'
+            @bot.loggers.level = :error
+          when 'fatal'
+            @bot.loggers.level = :fatal
+          else
+            @bot.loggers.level = :debug
         end
       end
+    end
+
+    def database
+      if @bot.config.database['database'] == '__storage__'
+        @bot.config.database['database'] = storage(File.join('db', 'gamesbot.db'))
+      end
+
+      db_logs = (@bot.config.logging ? storage(File.join('logs', 'db.log')) : nil)
+      Database.connect(@bot.config.database, db_logs)
     end
   end
 end

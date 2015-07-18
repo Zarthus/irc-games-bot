@@ -7,6 +7,11 @@ require 'gamebot/utilities/string'
 require 'gamebot/utilities/dir'
 require 'gamebot/utilities/paste'
 
+require 'gamebot/database/connection'
+require 'gamebot/database/experience'
+require 'gamebot/database/game'
+require 'gamebot/database/user'
+
 require 'gamebot/game/info'
 require 'gamebot/game/players'
 require 'gamebot/game/status'

@@ -25,6 +25,13 @@ irc:
   game_channel:
     - "#ircgames"
 
+database:
+  adapter: "sqlite"
+  host:
+  database: "__storage__"
+  username:
+  password:
+
 logging: true
 prefix: "!"
 source_url: "https://github.com/zarthus/irc-games-bot/"
