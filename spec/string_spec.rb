@@ -2,6 +2,8 @@ require 'rspec'
 require_relative 'spec_helper'
 
 describe 'String Helper Functions' do
+  using StringRefinement
+
   it 'should camelize input' do
     expect('mechanism_manager'.camelize).to eq('MechanismManager')
   end
