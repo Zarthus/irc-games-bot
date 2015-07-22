@@ -12,12 +12,7 @@ if File.exist?(File.join(conf_path, 'config.yaml'))
     conf['database']['database'] = File.join(storage_path, 'db', 'gamesbot.db')
   end
 else
-  puts 'Error: No config.yaml file found. Assuming travis-ci tests.'
-
-  conf = YAML.load_file(File.join(conf_path, 'config.example.yaml'))
-  if conf['database']['database'] == '__storage__'
-    conf['database']['database'] = File.join(storage_path, 'db', 'gamesbot.db')
-  end
+  STDERR.puts 'Error: No suitable configuration file found. Tasks that require configuration files will fail.'
 end
 
 namespace :db do
