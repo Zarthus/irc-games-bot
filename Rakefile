@@ -6,7 +6,7 @@ migration_path = File.join(app_path, 'database', 'migrations')
 conf_path = File.join(root_path, 'conf')
 storage_path = File.join(root_path, 'storage')
 
-if File.exists?(File.join(conf_path, 'config.yaml'))
+if File.exist?(File.join(conf_path, 'config.yaml'))
   conf = YAML.load_file(File.join(conf_path, 'config.yaml')) # TODO: Account for --env <env> in ./bot.rb
   if conf['database']['database'] == '__storage__'
     conf['database']['database'] = File.join(storage_path, 'db', 'gamesbot.db')
