@@ -8,6 +8,8 @@ rvm:
   - 2.2.0
   - ruby-head
 
+sudo: false
+
 script:
   - bundle install
   - bundle exec rspec
