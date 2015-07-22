@@ -6,9 +6,18 @@ migration_path = File.join(app_path, 'database', 'migrations')
 conf_path = File.join(root_path, 'conf')
 storage_path = File.join(root_path, 'storage')
 
-conf = YAML.load_file(File.join(conf_path, 'config.yaml')) # TODO: Account for --env <env> in ./bot.rb
-if conf['database']['database'] == '__storage__'
-  conf['database']['database'] = File.join(storage_path, 'db', 'gamesbot.db')
+if File.exists?(File.join(conf_path, 'config.yaml'))
+  conf = YAML.load_file(File.join(conf_path, 'config.yaml')) # TODO: Account for --env <env> in ./bot.rb
+  if conf['database']['database'] == '__storage__'
+    conf['database']['database'] = File.join(storage_path, 'db', 'gamesbot.db')
+  end
+else
+  puts 'Error: No config.yaml file found. Assuming travis-ci tests.'
+
+  conf = YAML.load_file(File.join(conf_path, 'config.example.yaml'))
+  if conf['database']['database'] == '__storage__'
+    conf['database']['database'] = File.join(storage_path, 'db', 'gamesbot.db')
+  end
 end
 
 namespace :db do
@@ -56,7 +65,7 @@ Sequel.migration do
     # TODO auto-generated migration
   end
 end
-content
+      content
 
       timestamp = Time.now.to_i
       filename = File.join(migration_path, "#{timestamp}_#{args[:name]}.rb")
