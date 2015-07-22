@@ -1,6 +1,6 @@
 module GameBot
   module Database
-    class Experience
+    class GameSession
     end
   end
 end

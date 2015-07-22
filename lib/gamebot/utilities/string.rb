@@ -23,4 +23,3 @@ class String
     Paste.paste(to_s)
   end
 end
-

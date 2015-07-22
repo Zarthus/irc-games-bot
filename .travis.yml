@@ -12,6 +12,7 @@ script:
   - bundle install
   - bundle exec rspec
   - bundle exec rubocop
+  - bundle exec rake db:migrate
 
 notifications:
   email:

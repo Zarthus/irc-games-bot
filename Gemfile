@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'cinch'
 gem 'gist'
 gem 'sequel'
+gem 'rake'
 
 group :test do
   gem 'rspec'

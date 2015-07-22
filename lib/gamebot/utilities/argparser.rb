@@ -16,6 +16,14 @@ module GameBot
             options[:env] = env
           end
 
+          opts.on('--migrate-up', 'Migrate databases.') do
+            Database::Migrator.schedule(:up)
+          end
+
+          opts.on('--migrate-down', 'Rollback migrations and shut down.') do
+            Database::Migrator.schedule(:down)
+          end
+
           opts.on_tail('-h', '--help', 'Show this help message') do
             puts opts
             exit

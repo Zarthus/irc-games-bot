@@ -73,10 +73,10 @@ module GameBot
 
           alt_storage = File.join(Dir.back(c.root, 2), 'storage')
           c.storage = File.join(config['storage_path'] || alt_storage)
+          info "Storage path: #{c.storage}"
+
           c.logging = config['logging']
           c.database = config['database']
-
-          info "Storage path: #{c.storage}"
 
           Paste.default config['paste_service'] if config['paste_service']
         end

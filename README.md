@@ -18,6 +18,8 @@ The easiest way to do this is by running `bundle install` from the root of the d
 Once the command has completed, copy `conf/config.example.yaml` to `conf/config.yaml` and start editing the file with your favourite text editor.
 Most of the options will be straightforward if you have experience with IRC. If an option confuses you, refer to [the docs](docs/configuration.md).
 
+Run `rake db:test` to see if you have are able to connect to your database. If all is well, you can run `rake db:migrate` to migrate the database.
+
 ## Running tests
 
 Once installed and configured, execute `bundle exec rspec` to run the tests

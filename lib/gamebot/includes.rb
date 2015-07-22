@@ -1,16 +1,20 @@
 require 'gamebot/version'
 require 'gamebot/plugin_loader'
 require 'gamebot/plugins/plugin'
+require 'logger'
 
 require 'gamebot/utilities/argparser'
 require 'gamebot/utilities/string'
 require 'gamebot/utilities/dir'
 require 'gamebot/utilities/paste'
 
+require 'sequel'
 require 'gamebot/database/connection'
-require 'gamebot/database/experience'
-require 'gamebot/database/game'
-require 'gamebot/database/user'
+require 'gamebot/database/migrator'
+require 'gamebot/database/models/game'
+require 'gamebot/database/models/user'
+require 'gamebot/database/models/experience'
+require 'gamebot/database/models/game_session'
 
 require 'gamebot/game/info'
 require 'gamebot/game/players'
