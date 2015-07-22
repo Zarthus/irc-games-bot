@@ -5,20 +5,20 @@ module GameBot
 
       def intialize
         super
-        @manager = Manager.new
+        @manager = Game::Manager.new
       end
 
-      match '/start ([^ ]+)?(?: (.+))?/', method: :cmd_start
+      match Regexp.new('start(?: ([^ ]+)?)(?: (.+))?'), method: :cmd_start
       def cmd_start(m, name, params)
         cmd_game m, 'start', name, params
       end
 
-      match '/stop$/', method: :cmd_stop
+      match Regexp.new('stop$'), method: :cmd_stop
       def cmd_stop(m)
         cmd_game m, 'stop', '', ''
       end
 
-      match '/game ([^ ]+)?(?: ([^ ]+)?(?: (.+)))?/', method: :cmd_game
+      match Regexp.new('game ([^ ]+)?(?: ([^ ]+)?)(?: (.+))?'), method: :cmd_game
       def cmd_game(m, keyword, name, params)
         return false unless game_channel?(m.channel.to_s.downcase)
 
@@ -28,7 +28,9 @@ module GameBot
 
         options = nil
         if params
-          # TODO
+          options = Game::GameOptionParser.parse(params)
+
+          return m.reply options[:message] if options[:message]
         end
 
         case keyword.downcase

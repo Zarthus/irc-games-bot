@@ -4,7 +4,11 @@ module GameBot
       @db = Sequel.connect(conf)
       @db.loggers << Logger.new(storage) if storage
 
-      Migrator.execute(@db) if Migrator.scheduled
+      if Migrator.scheduled
+        status = Migrator.execute(@db)
+        @db.log_info status[:message]
+        exit if status[:code] == 1
+      end
     end
 
     def self.disconnect

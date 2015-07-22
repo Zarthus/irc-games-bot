@@ -1,5 +1,3 @@
-require 'optparse'
-
 module GameBot
   module Utilities
     class ArgParser

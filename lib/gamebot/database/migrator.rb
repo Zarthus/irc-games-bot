@@ -14,13 +14,15 @@ module GameBot
         if @schedule
           if @schedule == :down
             Sequel::Migrator.run(db, File.join(__dir__, 'migrations'), target: 0)
-            info 'Successfully migrated down.'
-            exit
+
+            return { message: 'Successfully migrated down.', code: 1 }
           else
             Sequel::Migrator.run(db, File.join(__dir__, 'migrations'))
-            info 'Successfully migrated up.'
+
+            return { message: 'Successfully migrated up.', code: 0 }
           end
         end
+        { message: 'Nothing to execute.', code: 0 }
       end
     end
   end
