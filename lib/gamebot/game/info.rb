@@ -28,9 +28,8 @@ module GameBot
 
           nm = eval("Game::#{gamename}::NAME")
           desc = eval("Game::#{gamename}::DESCRIPTION")
-          gamehash[game] = {name: nm, description: desc}
+          gamehash[game] = { name: nm, description: desc }
         end
-
 
         puts gamehash.to_s
         gamehash

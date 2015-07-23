@@ -18,12 +18,12 @@ module GameBot
         dirname = File.dirname(path)
         autoload_name = basename.camelize
 
-        @autoloading[autoload_name] = {name: autoload_name, filename: basename, dirname: dirname}
+        @autoloading[autoload_name] = { name: autoload_name, filename: basename, dirname: dirname }
       end
     end
 
     def autoload_files
-      @autoloading.each do |name, hash|
+      @autoloading.each do |_name, hash|
         require File.join(hash[:dirname], hash[:filename]).sub('lib' + File::SEPARATOR, '')
       end
     end
