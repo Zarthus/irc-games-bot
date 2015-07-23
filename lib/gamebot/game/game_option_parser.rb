@@ -2,7 +2,7 @@ module GameBot
   module Game
     class GameOptionParser
       def self.parse(args)
-        options = {}
+        options = { errors: [] }
         opt_parser = OptionParser.new do |opts|
           opts.banner = 'Some parameters rely on the game to parse them.' + "\n" \
             'Refer to the game documentation for a list of supported options.' + "\n\n"
@@ -21,8 +21,22 @@ module GameBot
             options[:roles] = r
           end
 
+          opts.on_tail('-l', '--list', 'List the available games.') do
+            if options[:message]
+              options[:errors] << 'The parameter --list cannot be used in conjunction with other parameters.'
+            else
+              options[:message] = 'A list of available games can be found here: '
+              options[:gist] = {}
+            end
+          end
+
           opts.on_tail('-h', '--help', 'Respond to the command with this message.') do
-            options[:help] = opts
+            if options[:message]
+              options[:errors] << 'The parameter --help cannot be used in conjunction with other parameters.'
+            else
+              options[:message] = 'A list of available commands can be found here: '
+              options[:gist] = opts
+            end
           end
         end
 

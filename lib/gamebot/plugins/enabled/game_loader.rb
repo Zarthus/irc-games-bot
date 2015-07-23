@@ -9,16 +9,19 @@ module GameBot
       end
 
       match Regexp.new('start(?: ([^ ]+)?)(?: (.+))?'), method: :cmd_start
+
       def cmd_start(m, name, params)
         cmd_game m, 'start', name, params
       end
 
       match Regexp.new('stop$'), method: :cmd_stop
+
       def cmd_stop(m)
         cmd_game m, 'stop', '', ''
       end
 
       match Regexp.new('game(?: ([^ ]+)?(?: ([^ ]+)?)(?: (.+))?)?'), method: :cmd_game
+
       def cmd_game(m, keyword, name, params)
         return false unless game_channel?(m.channel.to_s.downcase)
 
@@ -28,13 +31,10 @@ module GameBot
 
         options = nil
         if params
-          options = Game::GameOptionParser.parse(params.split)
+          result = parse_params(m, params)
+          return true if result[1]  # Do not continue if we have sent a message
 
-          if options[:help]
-            return m.reply "All options can be found here: #{options[:help].to_s.to_gist}"
-          end
-
-          return m.reply options[:message] if options[:message]
+          options = result[0]
         end
 
         case keyword.downcase
@@ -46,20 +46,57 @@ module GameBot
             m.reply 'Usage: GAME <keyword: start, end> <gamename> [options ..]'
         end
       end
-    end
 
-    def game_start(m, name, _options)
-      @game = name
-      m.reply "A game of #{name} has been started by #{m.user}!"
-    end
+      def game_start(m, name, _options)
+        @game = name
+        m.reply "A game of #{name} has been started by #{m.user}!"
+      end
 
-    def started
-      @game
-    end
+      def started
+        @game
+      end
 
-    def game_stop(m)
-      m.reply "A game of #{@game} has been stopped by #{m.user}!"
-      @game = nil
+      def game_stop(m)
+        m.reply "A game of #{@game} has been stopped by #{m.user}!"
+        @game = nil
+      end
+
+      def parse_params(m, params)
+        options = Game::GameOptionParser.parse(params.split)
+
+        if options[:message]
+          display_errors(m, options[:errors]) if options[:errors].count != 0
+
+          if options[:gist]
+            gist = options[:gist].to_s.to_gist
+            m.reply options[:message] + gist
+            return [options, true]
+          end
+
+          m.reply options[:message]
+          return [options, true]
+        end
+
+        [options, false]
+      end
+
+      def display_errors(m, errors)
+        if errors
+          if errors.count > 2
+            message = 'The following errors occurred: ' + "\n\n"
+
+            errors.each do |err|
+              message += "- #{err}\n"
+            end
+
+            m.reply 'Several errors have occured while parsing the parameters: ' + message.to_gist
+          else
+            errors.each do |err|
+              m.reply err
+            end
+          end
+        end
+      end
     end
   end
 end
