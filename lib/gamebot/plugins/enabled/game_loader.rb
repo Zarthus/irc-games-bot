@@ -83,7 +83,7 @@ module GameBot
       def display_errors(m, errors)
         if errors
           if errors.count > 2
-            message = 'The following errors occurred: ' + "\n\n"
+            message = 'The following errors occurred while parsing parameters: ' + "\n\n"
 
             errors.each do |err|
               message += "- #{err}\n"
@@ -92,7 +92,7 @@ module GameBot
             m.reply 'Several errors have occured while parsing the parameters: ' + message.to_gist
           else
             errors.each do |err|
-              m.reply err
+              m.reply '[warning] ' + err
             end
           end
         end
