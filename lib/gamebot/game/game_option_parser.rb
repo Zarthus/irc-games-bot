@@ -26,7 +26,15 @@ module GameBot
               options[:errors] << 'The parameter --list cannot be used in conjunction with other parameters.'
             else
               options[:message] = 'A list of available games can be found here: '
-              options[:gist] = {}
+
+              message = "Here is a list of all games that can be started:\n\n"
+              Info.list.each do |name, hash|
+                name_start = hash[:name].gsub(' ', '_').downcase
+
+                message += "- #{name_start} => #{hash[:name]} (#{name}.rb): #{hash[:description]}\n"
+              end
+
+              options[:gist] = message
             end
           end
 

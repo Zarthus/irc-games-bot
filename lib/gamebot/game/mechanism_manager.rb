@@ -1,6 +1,8 @@
 module GameBot
   module Game
     class MechanismManager
+      using StringRefinement
+
       @loaded = {}
 
       def add(mechanism)
@@ -15,7 +17,6 @@ module GameBot
         end
 
         mechanism.downcase!
-        require "gamebot/game/mechanism/#{mechanism.underscore}"
         @loaded[mechanism] = eval("Mechanism::#{mechanism.camelize}.new")
         true
       end
