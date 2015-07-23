@@ -1,23 +1,21 @@
-require 'gist'
-
 class Paste
   @_default = :gist
   @_valid = [:gist]
 
   def self.default(service)
-    if valid service
+    if valid? service
       @_default = service
     else
-      raise "Paste Service does not exist: #{_default}."
+      raise "Paste Service does not exist: #{@_default}."
     end
   end
 
-  def self.paste(contents, *args)
-    case _default
+  def self.paste(contents, options = {})
+    case @_default
       when :gist
-        res = gist(contents, *args)['html_url']
+        res = gist(contents, options)['html_url']
       else
-        raise "Paste Service does not exist: #{_default}."
+        raise "Paste Service does not exist: #{@_default}."
     end
 
     res
@@ -53,7 +51,7 @@ class Paste
     Gist.gist(contents, options)
   end
 
-  def self.valid(service)
+  def self.valid?(service)
     @_valid.find(service.downcase)
   end
 end

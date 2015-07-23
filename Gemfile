@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'cinch'
 gem 'gist'
+gem 'googl'
 gem 'sequel'
 gem 'rake'
 

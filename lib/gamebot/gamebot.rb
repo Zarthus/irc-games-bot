@@ -1,5 +1,3 @@
-require 'cinch'
-require 'yaml'
 require 'gamebot/includes'
 
 module GameBot
@@ -79,6 +77,9 @@ module GameBot
           c.database = config['database']
 
           Paste.default config['paste_service'] if config['paste_service']
+          ShortUrl.default config['shorten_service'] if config['shorten_service']
+
+          c.api_keys = config['api_keys']
         end
       end
       logging
