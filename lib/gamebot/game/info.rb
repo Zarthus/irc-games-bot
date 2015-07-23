@@ -31,7 +31,6 @@ module GameBot
           gamehash[game] = { name: nm, description: desc }
         end
 
-        puts gamehash.to_s
         gamehash
       end
     end
