@@ -4,10 +4,10 @@ module GameBot
       def self.parse(args)
         options = {}
         opt_parser = OptionParser.new do |opts|
-          opts.banner = 'Some parameters rely on the game to parse them' + "\n" \
-            'Refer to the game documentation for a list of supported options.'
+          opts.banner = 'Some parameters rely on the game to parse them.' + "\n" \
+            'Refer to the game documentation for a list of supported options.' + "\n\n"
 
-          opts.on('-w', '--wait', 'Duration to wait for players to join? Supported: short, medium, long') do |dur|
+          opts.on('-w', '--wait', 'Duration to wait for players to join. Supported: short, medium, long') do |dur|
             options[:wait] = dur if [:long, :medium, :short].find(dur)
           end
 
@@ -22,7 +22,7 @@ module GameBot
           end
 
           opts.on_tail('-h', '--help', 'Respond to the command with this message.') do
-            options[:message] = "All options can be found here: #{opts.to_gist}"
+            options[:help] = opts
           end
         end
 

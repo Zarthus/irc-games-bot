@@ -16,7 +16,7 @@ end
 
 class String
   def to_gist
-    Paste.gist(to_s)
+    Paste.gist(to_s)['html_url']
   end
 
   def to_paste

@@ -18,7 +18,7 @@ module GameBot
         cmd_game m, 'stop', '', ''
       end
 
-      match Regexp.new('game ([^ ]+)?(?: ([^ ]+)?)(?: (.+))?'), method: :cmd_game
+      match Regexp.new('game(?: ([^ ]+)?(?: ([^ ]+)?)(?: (.+))?)?'), method: :cmd_game
       def cmd_game(m, keyword, name, params)
         return false unless game_channel?(m.channel.to_s.downcase)
 
@@ -28,7 +28,11 @@ module GameBot
 
         options = nil
         if params
-          options = Game::GameOptionParser.parse(params)
+          options = Game::GameOptionParser.parse(params.split)
+
+          if options[:help]
+            return m.reply "All options can be found here: #{options[:help].to_s.to_gist}"
+          end
 
           return m.reply options[:message] if options[:message]
         end

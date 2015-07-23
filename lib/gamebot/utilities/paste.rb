@@ -15,7 +15,7 @@ class Paste
   def self.paste(contents, *args)
     case _default
       when :gist
-        res = gist(contents, *args)
+        res = gist(contents, *args)['html_url']
       else
         raise "Paste Service does not exist: #{_default}."
     end
