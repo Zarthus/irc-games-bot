@@ -1,3 +1,6 @@
 .idea
+.vagrant
+.bundle
 pidfile.pid
 Gemfile.lock
+Vagrantfile

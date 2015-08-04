@@ -14,13 +14,21 @@ end
 group :db do
   platforms :ruby do
     gem 'sqlite3'
+  end
+
+  platforms :jruby do
+    gem 'jdbc-sqlite3'
+  end
+end
+
+group :extradrivers, optional: true do
+  platforms :ruby do
     gem 'pg'
     gem 'mysql'
     gem 'mysql2'
   end
 
   platforms :jruby do
-    gem 'jdbc-sqlite3'
     gem 'jdbc-mysql'
     gem 'jdbc-postgres'
   end
