@@ -1,0 +1,10 @@
+Sequel.migration do
+  up do
+    # TODO auto-generated migration
+  end
+
+  down do
+    # TODO auto-generated migration
+  end
+end
+

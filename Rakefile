@@ -50,17 +50,7 @@ namespace :db do
         exit false
       end
 
-      content = <<-content
-Sequel.migration do
-  up do
-    # TODO auto-generated migration
-  end
-
-  down do
-    # TODO auto-generated migration
-  end
-end
-      content
+      content = File.read('./storage/templates/migration')
 
       timestamp = Time.now.to_i
       filename = File.join(migration_path, "#{timestamp}_#{args[:name]}.rb")
