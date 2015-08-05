@@ -21,3 +21,6 @@ Style/GuardClause:
 
 Style/SignalException:
   Enabled: false
+
+Style/EndOfLine:
+  Enabled: false

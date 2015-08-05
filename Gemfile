@@ -21,7 +21,7 @@ group :db do
   end
 end
 
-group :extradrivers, optional: true do
+group :extradrivers do
   platforms :ruby do
     gem 'pg'
     gem 'mysql'
