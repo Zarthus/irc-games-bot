@@ -32,7 +32,7 @@ module GameBot
         options = nil
         if params
           result = parse_params(m, params)
-          return true if result[1]  # Do not continue if we have sent a message
+          return true if result[1] # Do not continue if we have sent a message
 
           options = result[0]
         end

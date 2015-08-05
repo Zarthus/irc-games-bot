@@ -29,7 +29,7 @@ module GameBot
 
               message = "Here is a list of all games that can be started:\n\n"
               Info.list.each do |name, hash|
-                name_start = hash[:name].gsub(' ', '_').downcase
+                name_start = hash[:name].tr(' ', '_').downcase
 
                 message += "- #{name_start} => #{hash[:name]} (#{name}.rb): #{hash[:description]}\n"
               end
